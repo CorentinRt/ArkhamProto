@@ -19,7 +19,12 @@ public class KnightLookController : MonoBehaviour
         _look.action.performed += UpdateLook;
         _look.action.canceled += EndLook;
     }
-
+    private void OnDestroy()
+    {
+        _look.action.started -= StartLook;
+        _look.action.performed -= UpdateLook;
+        _look.action.canceled -= EndLook;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -47,7 +52,9 @@ public class KnightLookController : MonoBehaviour
         {
             Vector3 tempRot = _lookHandler.rotation.eulerAngles;
 
-            tempRot.y += _lookDirection.x;
+            Vector3 tempRot2 = transform.rotation.eulerAngles;
+
+            tempRot2.y += _lookDirection.x;
 
             tempRot.x += _lookDirection.y;
             
@@ -62,9 +69,10 @@ public class KnightLookController : MonoBehaviour
                     tempRot.x = 330f;
                 }
             }
-            Debug.Log(tempRot.x);
 
             _lookHandler.rotation = Quaternion.Euler(tempRot);
+
+            transform.rotation = Quaternion.Euler(tempRot2);
 
             yield return null;
         }

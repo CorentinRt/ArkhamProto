@@ -12,6 +12,8 @@ public class KnightMoveController : MonoBehaviour
     private Vector2 _moveDirection;
     private Coroutine _moveCoroutine;
 
+    [SerializeField] private Animator _animator;
+
     private event Action _onMoveStarted;
     private event Action _onMoveEnded;
 
@@ -40,6 +42,8 @@ public class KnightMoveController : MonoBehaviour
         _onMoveStarted?.Invoke();
         _moveDirection = context.ReadValue<Vector2>();
         _moveCoroutine = StartCoroutine(MoveCoroutine());
+        _animator.SetTrigger("run");
+        _animator.SetBool("isRunning", true);
     }
     private void UpdateMove(InputAction.CallbackContext context)
     {
@@ -50,6 +54,7 @@ public class KnightMoveController : MonoBehaviour
         _onMoveEnded?.Invoke();
         _moveDirection = context.ReadValue<Vector2>();
         StopCoroutine( _moveCoroutine );
+        _animator.SetBool("isRunning", false);
     }
 
     IEnumerator MoveCoroutine()
@@ -59,7 +64,9 @@ public class KnightMoveController : MonoBehaviour
         {
             Vector3 tempDir = new Vector3(_moveDirection.x, 0f, _moveDirection.y);
 
-            transform.position += tempDir * _speed * Time.deltaTime;
+            tempDir = tempDir.normalized;
+
+            transform.localPosition += tempDir * _speed * Time.deltaTime;
 
             yield return null;
         }
