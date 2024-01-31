@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5782832048289239245}
   - component: {fileID: 3116599321975952403}
   - component: {fileID: 8139218233693890871}
+  - component: {fileID: 3679486295495514598}
   m_Layer: 0
   m_Name: KnightPrefab
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8688680247948721762}
-  - {fileID: 3108282479739595504}
+  - {fileID: 808971442526411652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5782832048289239245
@@ -74,6 +75,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e10aaa0d-7180-47fb-bdba-678227ce32a8
     m_ActionName: Game/Withdraw[/Keyboard/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 555463e1-cf79-4c1e-a428-194bbb38063f
+    m_ActionName: Game/Look[/Mouse/delta/up,/Mouse/delta/down,/Mouse/delta/left,/Mouse/delta/right,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -105,6 +110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bff728a488100e40af6cf757b52b5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3679486295495514598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937561545917126356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc766b986fde024e9f5807ffe60b6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _look: {fileID: -6610425770572577595, guid: 3e70c00bad02e454694144ab577af853, type: 3}
+  _lookSpeed: 5
+  _lookHandler: {fileID: 808971442526411652}
 --- !u!1 &5923245864122066894
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,11 +287,43 @@ Transform:
   m_GameObject: {fileID: 6056671359910297643}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 2.92, z: -2.78}
+  m_LocalPosition: {x: 0.81, y: 3.1, z: -2.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3305909255474297045}
+  m_Father: {fileID: 808971442526411652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8522784424747303501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808971442526411652}
+  m_Layer: 0
+  m_Name: Lookhandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &808971442526411652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522784424747303501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3108282479739595504}
   m_Father: {fileID: 3410941194353613097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6140072501290313789
