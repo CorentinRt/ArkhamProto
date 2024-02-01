@@ -56,6 +56,14 @@ public class KnightMoveController : MonoBehaviour
         {
             _animator.SetBool("strafeFront", false);
         }
+        if (MathF.Abs(_moveDirection.y) < MathF.Abs(_moveDirection.x) && _moveDirection.x < 0f)
+        {
+            _animator.SetBool("strafeBack", true);
+        }
+        else
+        {
+            _animator.SetBool("strafeBack", false);
+        }
     }
     private void EndMove(InputAction.CallbackContext context)
     {
@@ -64,6 +72,7 @@ public class KnightMoveController : MonoBehaviour
         StopCoroutine( _moveCoroutine );
         _animator.SetBool("isRunning", false);
         _animator.SetBool("strafeFront", false);
+        _animator.SetBool("strafeBack", false);
     }
 
     IEnumerator MoveCoroutine()
