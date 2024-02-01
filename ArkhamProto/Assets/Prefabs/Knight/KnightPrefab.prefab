@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3116599321975952403}
   - component: {fileID: 8139218233693890871}
   - component: {fileID: 3679486295495514598}
+  - component: {fileID: 3669096071922385273}
   m_Layer: 0
   m_Name: KnightPrefab
   m_TagString: Untagged
@@ -129,6 +130,32 @@ MonoBehaviour:
   _look: {fileID: -6610425770572577595, guid: 3e70c00bad02e454694144ab577af853, type: 3}
   _lookSpeed: 5
   _lookHandler: {fileID: 808971442526411652}
+--- !u!143 &3669096071922385273
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937561545917126356}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2.5
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.3, z: 0}
 --- !u!1 &5923245864122066894
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,7 +66,12 @@ public class KnightMoveController : MonoBehaviour
 
             tempDir = tempDir.normalized;
 
-            transform.localPosition += tempDir * _speed * Time.deltaTime;
+            Vector3 tempMoveHorizontal = transform.right;
+            Vector3 tempMoveVertical = transform.forward;
+            Vector3 tempMove = tempMoveHorizontal * tempDir.x + tempMoveVertical * tempDir.z;
+            tempMove = tempMove.normalized;
+
+            transform.position += tempMove * _speed * Time.deltaTime;
 
             yield return null;
         }
