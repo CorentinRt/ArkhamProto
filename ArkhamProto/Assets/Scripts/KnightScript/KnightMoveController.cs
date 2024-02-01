@@ -48,6 +48,14 @@ public class KnightMoveController : MonoBehaviour
     private void UpdateMove(InputAction.CallbackContext context)
     {
         _moveDirection = context.ReadValue<Vector2>();
+        if( MathF.Abs(_moveDirection.y) < MathF.Abs(_moveDirection.x) && _moveDirection.x > 0f )
+        {
+            _animator.SetBool("strafeFront", true);
+        }
+        else
+        {
+            _animator.SetBool("strafeFront", false);
+        }
     }
     private void EndMove(InputAction.CallbackContext context)
     {
@@ -55,6 +63,7 @@ public class KnightMoveController : MonoBehaviour
         _moveDirection = context.ReadValue<Vector2>();
         StopCoroutine( _moveCoroutine );
         _animator.SetBool("isRunning", false);
+        _animator.SetBool("strafeFront", false);
     }
 
     IEnumerator MoveCoroutine()
@@ -64,12 +73,9 @@ public class KnightMoveController : MonoBehaviour
         {
             Vector3 tempDir = new Vector3(_moveDirection.x, 0f, _moveDirection.y);
 
-            tempDir = tempDir.normalized;
-
             Vector3 tempMoveHorizontal = transform.right;
             Vector3 tempMoveVertical = transform.forward;
             Vector3 tempMove = tempMoveHorizontal * tempDir.x + tempMoveVertical * tempDir.z;
-            tempMove = tempMove.normalized;
 
             transform.position += tempMove * _speed * Time.deltaTime;
 
