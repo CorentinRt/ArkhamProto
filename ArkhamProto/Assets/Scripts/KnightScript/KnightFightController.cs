@@ -8,15 +8,21 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private InputActionReference _withdraw;
     [SerializeField] private Animator _animator;
 
+    [Header("Transforms")]
     [SerializeField] private Transform _sword;
     [SerializeField] private Transform _hands;
     [SerializeField] private Transform _hips;
 
+    [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
     [SerializeField] private float _sheatCooldown;
 
     private Coroutine _unsheatCooldownCoroutine;
     private Coroutine _sheatCooldownCoroutine;
+
+    [Space(20)]
+
+    [Header("Defined positions and rotations")]
 
     [SerializeField] private Vector3 _unsheatRotation;
     [SerializeField] private Vector3 _sheatRotation;

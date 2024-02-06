@@ -6,10 +6,10 @@ public class SwordBehavior : MeleeWeaponBehavior
 {
 
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+    //{
         
-    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -19,7 +19,11 @@ public class SwordBehavior : MeleeWeaponBehavior
 
     public override void Hit(GameObject target)
     {
-        throw new System.NotImplementedException();
+        if ( 1 << target.layer == Mask)
+        {
+            Debug.Log("Hit enemy");
+        }
+        
     }
 
     public override void Damage(GameObject target)

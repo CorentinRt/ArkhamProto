@@ -5,14 +5,20 @@ using UnityEngine;
 
 public abstract class MeleeWeaponBehavior : MonoBehaviour
 {
+    // Fields
+
     [SerializeField] LayerMask _mask;
     [SerializeField] HitEntity _hitEntity;
 
-    private CapsuleCollider _capsuleCollider;
+    private BoxCollider _boxCollider;
+
+
+    // Properties
+    public LayerMask Mask { get => _mask; set => _mask = value; }
 
     private void Awake()
     {
-        _capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+        _boxCollider = _hitEntity.gameObject.GetComponent<BoxCollider>();
     }
     // Start is called before the first frame update
     void Start()
