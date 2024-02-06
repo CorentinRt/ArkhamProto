@@ -21,7 +21,9 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private Vector3 _unsheatRotation;
     [SerializeField] private Vector3 _sheatRotation;
 
+
     private Vector3 _sheatPosition;
+    [SerializeField] private Vector3 _unsheatPosition;
 
     private bool _hasWithdraw;
 
@@ -90,20 +92,9 @@ public class KnightFightController : MonoBehaviour
 
         SwordInHand();
 
-        //Vector3 tempRot = _sword.localRotation.eulerAngles;
-        //float percent = 0f;
-        //while (percent < 1f)
-        //{
-        //    tempRot.x = Mathf.Lerp(tempRot.x, _unsheatRotation.x, percent);
-        //    tempRot.y = Mathf.Lerp(tempRot.y, _unsheatRotation.y, percent);
-        //    tempRot.z = Mathf.Lerp(tempRot.z, _unsheatRotation.z, percent);
-        //    _sword.localRotation = Quaternion.Euler(tempRot);
-
-        //    percent += Time.deltaTime;
-
-        //    yield return null;
-        //}
         _sword.localRotation = Quaternion.Euler(_unsheatRotation);
+
+        _sword.localPosition = _unsheatPosition;
 
         _unsheatCooldownCoroutine = null;
 
@@ -116,19 +107,6 @@ public class KnightFightController : MonoBehaviour
 
         SwordInHips();
 
-        //Vector3 tempRot = _sword.localRotation.eulerAngles;
-        //float percent = 0f;
-        //while (percent < 1f)
-        //{
-        //    tempRot.x = Mathf.Lerp(tempRot.x, _sheatRotation.x, percent);
-        //    tempRot.y = Mathf.Lerp(tempRot.y, _sheatRotation.y, percent);
-        //    tempRot.z = Mathf.Lerp(tempRot.z, _sheatRotation.z, percent);
-        //    _sword.localRotation = Quaternion.Euler(tempRot);
-
-        //    percent += 5f * Time.deltaTime;
-
-        //    yield return null;
-        //}
         _sword.localRotation = Quaternion.Euler(_sheatRotation);
 
         _sword.localPosition = _sheatPosition;

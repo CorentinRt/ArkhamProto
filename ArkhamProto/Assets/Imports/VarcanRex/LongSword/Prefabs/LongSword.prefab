@@ -49,6 +49,7 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 128
+  _hitEntity: {fileID: 2677538524609484237}
 --- !u!1 &4334314813405729788
 GameObject:
   m_ObjectHideFlags: 0
