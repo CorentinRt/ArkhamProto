@@ -5,6 +5,17 @@ using UnityEngine.InputSystem;
 
 public class KnightFightController : MonoBehaviour
 {
+
+    enum MeleeType
+    {
+        Sword,
+        Spear,
+        Axe
+    }
+
+    // Fields
+
+    [SerializeField] private InputActionReference _attack;
     [SerializeField] private InputActionReference _withdraw;
     [SerializeField] private Animator _animator;
     [SerializeField] private KnightMainStates _mainStates;
@@ -13,6 +24,9 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private Transform _sword;
     [SerializeField] private Transform _hands;
     [SerializeField] private Transform _hips;
+
+    [Header("Weapon")]
+    private MeleeType _equippedWeapon;
 
     [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
@@ -38,17 +52,36 @@ public class KnightFightController : MonoBehaviour
         _withdraw.action.started += StartWithdraw;
         _withdraw.action.canceled += EndWithdraw;
 
+        _attack.action.started += StartAttack;
+        _attack.action.canceled += EndAttack;
+
         _sheatPosition = _sword.localPosition;
     }
     private void OnDestroy()
     {
         _withdraw.action.started -= StartWithdraw;
         _withdraw.action.canceled -= EndWithdraw;
+
+        _attack.action.started -= StartAttack;
+        _attack.action.canceled -= EndAttack;
     }
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void StartAttack(InputAction.CallbackContext context)
+    {
+        if (_mainStates.CanAttack)
+        {
+            _mainStates.CanAttack = false;
+            _animator.SetTrigger("Attack");
+        }
+    }
+    private void EndAttack(InputAction.CallbackContext context)
+    {
+        _mainStates.CanAttack = true;
     }
 
     private void StartWithdraw(InputAction.CallbackContext context)

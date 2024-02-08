@@ -5,7 +5,7 @@ using UnityEngine;
 public class KnightMainStates : MonoBehaviour
 {
     // Fields
-    private bool _canAttack;
+    private bool _canAttack = true;
     private bool _hasWithdraw;
     private bool _isRunning;
 
