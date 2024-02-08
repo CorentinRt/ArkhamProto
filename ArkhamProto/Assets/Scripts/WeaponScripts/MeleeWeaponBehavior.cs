@@ -7,21 +7,21 @@ public abstract class MeleeWeaponBehavior : MonoBehaviour
 {
     // Fields
 
-    [SerializeField] Transform _weapon;
+    Transform _weapon;
 
-    [SerializeField] LayerMask _mask;
-    [SerializeField] HitEntity _hitEntity;
+    LayerMask _mask;
+    HitEntity _hitEntity;
 
-    private BoxCollider _boxCollider;
 
 
     // Properties
     public LayerMask Mask { get => _mask; set => _mask = value; }
     public Transform Weapon { get => _weapon; set => _weapon = value; }
+    public HitEntity HitEntity { get => _hitEntity; set => _hitEntity = value; }
 
     private void Awake()
     {
-        _boxCollider = _hitEntity.gameObject.GetComponent<BoxCollider>();
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -39,4 +39,11 @@ public abstract class MeleeWeaponBehavior : MonoBehaviour
     }
     public abstract void Hit(GameObject target);
     public abstract void Damage(GameObject target);
+
+    IEnumerator WaitBeforeHit()
+    {
+        yield return new WaitForSeconds(1);
+
+        yield return null;
+    }
 }

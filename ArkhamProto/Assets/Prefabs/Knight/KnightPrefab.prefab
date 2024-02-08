@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3410941194353613097}
   - component: {fileID: 5782832048289239245}
-  - component: {fileID: 2625615127712807577}
   m_Layer: 0
   m_Name: KnightPrefab
   m_TagString: Untagged
@@ -85,23 +84,6 @@ MonoBehaviour:
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2625615127712807577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2937561545917126356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee4e5314b37412e479180da5ee29faf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapon: {fileID: 4117301942505534161}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 128
-  _hitEntity: {fileID: 7014847933679540668}
 --- !u!1 &5069677015640247287
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +238,8 @@ MonoBehaviour:
   _sword: {fileID: 4117301942505534161}
   _hands: {fileID: 7398131133234882113}
   _hips: {fileID: 3802223814740401910}
+  _equippedWeapon: 0
+  _hitEntity: {fileID: 7014847933679540668}
   _unsheatCooldown: 0.7
   _sheatCooldown: 1.15
   _unsheatRotation: {x: 347.96646, y: 6.878839, z: 70.50092}

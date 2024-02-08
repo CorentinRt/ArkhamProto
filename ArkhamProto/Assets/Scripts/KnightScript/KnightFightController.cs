@@ -26,7 +26,8 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private Transform _hips;
 
     [Header("Weapon")]
-    private MeleeType _equippedWeapon;
+    [SerializeField] private MeleeType _equippedWeapon;
+    [SerializeField] private HitEntity _hitEntity;
 
     [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
@@ -46,9 +47,20 @@ public class KnightFightController : MonoBehaviour
     private Vector3 _sheatPosition;
     [SerializeField] private Vector3 _unsheatPosition;
 
+    private void Awake()
+    {
+        if (_equippedWeapon == MeleeType.Sword)
+        {
+            SwordBehavior swordBehavior = transform.parent.gameObject.AddComponent<SwordBehavior>();
+            swordBehavior.HitEntity = _hitEntity;
+            swordBehavior.Weapon = _sword;
+            swordBehavior.Mask = LayerMask.GetMask("Enemy");
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+
         _withdraw.action.started += StartWithdraw;
         _withdraw.action.canceled += EndWithdraw;
 
