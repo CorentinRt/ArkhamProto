@@ -38,6 +38,7 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private float _intervalStartAttack2;
     private Coroutine _attack1DurationCoroutine;
     private Coroutine _attack2DurationCoroutine;
+    [SerializeField] private LittleDashAttack _littleDashAttack;
 
     [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
@@ -100,7 +101,7 @@ public class KnightFightController : MonoBehaviour
     {
         if (_mainStates.CanAttack)
         {
-            AttackLittleDashCoroutine();
+            _littleDashAttack.LittleDash();
 
             if (_attack1DurationCoroutine == null)
             {
@@ -131,7 +132,7 @@ public class KnightFightController : MonoBehaviour
 
     private void StartAttack2()
     {
-        AttackLittleDashCoroutine();
+        _littleDashAttack.LittleDash();
 
         Debug.Log("Attack 2");
 
@@ -251,29 +252,30 @@ public class KnightFightController : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator AttackLittleDashCoroutine()
-    {
-        float distance = 5f;
+    //IEnumerator AttackLittleDashCoroutine()
+    //{
+    //    float distance = 5f;
 
-        Transform parent = transform.parent;
+    //    Transform parent = transform.parent;
 
-        Vector3 initialPosition = parent.position;
+    //    Vector3 initialPosition = parent.position;
 
-        Vector3 targetPosition = parent.position + parent.forward * distance;
+    //    Vector3 targetPosition = parent.position + parent.forward * distance;
 
-        float percent = 0f;
+    //    float percent = 0f;
 
-        float timeToTravel = 0.5f;
+    //    float timeToTravel = 0.5f;
 
-        while (percent < 1f)
-        {
-            transform.parent.position = Vector3.Lerp(initialPosition, targetPosition, percent);
+    //    while (percent < 1f)
+    //    {
+    //        Debug.Log("dash");
+    //        transform.parent.position = Vector3.Lerp(initialPosition, targetPosition, percent);
 
-            percent += Time.deltaTime / timeToTravel;
+    //        percent += Time.deltaTime / timeToTravel;
 
-            yield return null;
-        }
+    //        yield return null;
+    //    }
 
-        yield return null;
-    }
+    //    yield return null;
+    //}
 }
