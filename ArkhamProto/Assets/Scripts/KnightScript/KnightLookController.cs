@@ -72,7 +72,7 @@ public class KnightLookController : MonoBehaviour
 
             _lookHandler.rotation = Quaternion.Euler(tempRot);
 
-            transform.rotation = Quaternion.Euler(tempRot2);
+            transform.parent.rotation = Quaternion.Euler(tempRot2);
 
             yield return null;
         }

@@ -22,6 +22,8 @@ public class SwordBehavior : MeleeWeaponBehavior
         if ( 1 << target.layer == Mask)
         {
             Debug.Log("Hit enemy");
+
+            VfxManager.Instance.PlaySparksParticles(Weapon.position);
         }
         
     }

@@ -7,6 +7,8 @@ public abstract class MeleeWeaponBehavior : MonoBehaviour
 {
     // Fields
 
+    [SerializeField] Transform _weapon;
+
     [SerializeField] LayerMask _mask;
     [SerializeField] HitEntity _hitEntity;
 
@@ -15,6 +17,7 @@ public abstract class MeleeWeaponBehavior : MonoBehaviour
 
     // Properties
     public LayerMask Mask { get => _mask; set => _mask = value; }
+    public Transform Weapon { get => _weapon; set => _weapon = value; }
 
     private void Awake()
     {
