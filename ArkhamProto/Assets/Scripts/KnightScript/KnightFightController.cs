@@ -32,6 +32,13 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private HitEntity _hitEntity;
     [SerializeField] private WeaponsData _weaponsData;
 
+    [Header("Attack combo")]
+    private bool _prepareAttack2;
+    private float _timeBeforeAttack2;
+    [SerializeField] private float _intervalStartAttack2;
+    private Coroutine _attack1DurationCoroutine;
+    private Coroutine _attack2DurationCoroutine;
+
     [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
     [SerializeField] private float _sheatCooldown;
@@ -69,9 +76,11 @@ public class KnightFightController : MonoBehaviour
         _withdraw.action.canceled += EndWithdraw;
 
         _attack.action.started += StartAttack;
-        _attack.action.canceled += EndAttack;
+        //_attack.action.canceled += EndAttack;
 
         _sheatPosition = _sword.localPosition;
+
+        _timeBeforeAttack2 = 1.2f;
     }
     private void OnDestroy()
     {
@@ -79,7 +88,7 @@ public class KnightFightController : MonoBehaviour
         _withdraw.action.canceled -= EndWithdraw;
 
         _attack.action.started -= StartAttack;
-        _attack.action.canceled -= EndAttack;
+        //_attack.action.canceled -= EndAttack;
     }
     // Update is called once per frame
     void Update()
@@ -91,15 +100,54 @@ public class KnightFightController : MonoBehaviour
     {
         if (_mainStates.CanAttack)
         {
+            AttackLittleDashCoroutine();
+
+            if (_attack1DurationCoroutine == null)
+            {
+                _attack1DurationCoroutine = StartCoroutine(CooldownBeforeEndAttack());
+            }
             _hitEntity.gameObject.SetActive(true);
             _mainStates.CanAttack = false;
             _animator.SetTrigger("Attack");
         }
+        else if (!_prepareAttack2 && _timeBeforeAttack2 < _intervalStartAttack2)
+        {
+            _prepareAttack2 = true;
+        }
     }
-    private void EndAttack(InputAction.CallbackContext context)
+    private void EndAttack()
     {
+        _hitEntity.gameObject.SetActive(false);
+
+        if (_prepareAttack2)
+        {
+            StartAttack2();
+        }
+        else
+        {
+            _mainStates.CanAttack = true;
+        }
+    }
+
+    private void StartAttack2()
+    {
+        AttackLittleDashCoroutine();
+
+        Debug.Log("Attack 2");
+
+        if (_attack2DurationCoroutine == null)
+        {
+            _attack2DurationCoroutine = StartCoroutine(CooldownBeforeEndAttack2());
+        }
+        _hitEntity.gameObject.SetActive(true);
+        _animator.SetBool("PrepareAttack2", true);
+    }
+    private void EndAttack2()
+    {
+        _prepareAttack2 = false;
         _mainStates.CanAttack = true;
         _hitEntity.gameObject.SetActive(false);
+        _animator.SetBool("PrepareAttack2", false);
     }
 
     private void StartWithdraw(InputAction.CallbackContext context)
@@ -168,6 +216,63 @@ public class KnightFightController : MonoBehaviour
         _sword.localPosition = _sheatPosition;
 
         _sheatCooldownCoroutine = null;
+
+        yield return null;
+    }
+
+    IEnumerator CooldownBeforeEndAttack()
+    {
+        //yield return new WaitForSeconds(1.7f);
+
+        float tempTime = _timeBeforeAttack2;
+        while (_timeBeforeAttack2 > 0f)
+        {
+            _timeBeforeAttack2 -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        _timeBeforeAttack2 = tempTime;
+
+        EndAttack();
+
+        _attack1DurationCoroutine = null;
+
+        yield return null;
+    }
+    IEnumerator CooldownBeforeEndAttack2()
+    {
+        yield return new WaitForSeconds(1.3f);
+
+        EndAttack2();
+
+        _attack2DurationCoroutine = null;
+
+        yield return null;
+    }
+
+    IEnumerator AttackLittleDashCoroutine()
+    {
+        float distance = 5f;
+
+        Transform parent = transform.parent;
+
+        Vector3 initialPosition = parent.position;
+
+        Vector3 targetPosition = parent.position + parent.forward * distance;
+
+        float percent = 0f;
+
+        float timeToTravel = 0.5f;
+
+        while (percent < 1f)
+        {
+            transform.parent.position = Vector3.Lerp(initialPosition, targetPosition, percent);
+
+            percent += Time.deltaTime / timeToTravel;
+
+            yield return null;
+        }
 
         yield return null;
     }
