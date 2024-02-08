@@ -8,6 +8,10 @@ public class KnightMoveController : MonoBehaviour
 {
     [SerializeField] private InputActionReference _move;
 
+    [SerializeField] private KnightMainStates _mainStates;
+
+    private Transform _knightTransform;
+
     [SerializeField] float _speed;
     private Vector2 _moveDirection;
     private Coroutine _moveCoroutine;
@@ -20,6 +24,8 @@ public class KnightMoveController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _knightTransform = transform.parent.GetComponent<Transform>();
+
         _move.action.started += StartMove;
         _move.action.performed += UpdateMove;
         _move.action.canceled += EndMove;
@@ -86,7 +92,7 @@ public class KnightMoveController : MonoBehaviour
             Vector3 tempMoveVertical = transform.forward;
             Vector3 tempMove = tempMoveHorizontal * tempDir.x + tempMoveVertical * tempDir.z;
 
-            transform.position += tempMove * _speed * Time.deltaTime;
+            _knightTransform.position += tempMove * _speed * Time.deltaTime;
 
             yield return null;
         }

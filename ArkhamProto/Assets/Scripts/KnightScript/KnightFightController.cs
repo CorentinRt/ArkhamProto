@@ -7,6 +7,7 @@ public class KnightFightController : MonoBehaviour
 {
     [SerializeField] private InputActionReference _withdraw;
     [SerializeField] private Animator _animator;
+    [SerializeField] private KnightMainStates _mainStates;
 
     [Header("Transforms")]
     [SerializeField] private Transform _sword;
@@ -31,8 +32,6 @@ public class KnightFightController : MonoBehaviour
     private Vector3 _sheatPosition;
     [SerializeField] private Vector3 _unsheatPosition;
 
-    private bool _hasWithdraw;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +53,7 @@ public class KnightFightController : MonoBehaviour
 
     private void StartWithdraw(InputAction.CallbackContext context)
     {
-        if(_hasWithdraw)
+        if(_mainStates.HasWithdraw)
         {
             if(_unsheatCooldownCoroutine == null)
             {
@@ -73,13 +72,13 @@ public class KnightFightController : MonoBehaviour
     private void UnsheatSword()
     {
         _animator.SetTrigger("startWithdraw");
-        _hasWithdraw = true;
+        _mainStates.HasWithdraw = true;
         _unsheatCooldownCoroutine = StartCoroutine(CooldownBeforeUnsheatCoroutine());
     }
     private void SheatSword()
     {
         _animator.SetTrigger("endWithdraw");
-        _hasWithdraw = false;
+        _mainStates.HasWithdraw = false;
         _sheatCooldownCoroutine = StartCoroutine(CooldownBeforeSheatCoroutine());
     }
 
