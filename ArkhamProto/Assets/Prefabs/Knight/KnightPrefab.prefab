@@ -240,6 +240,7 @@ MonoBehaviour:
   _hips: {fileID: 3802223814740401910}
   _equippedWeapon: 0
   _hitEntity: {fileID: 7014847933679540668}
+  _weaponsData: {fileID: 11400000, guid: 03b6cfb38d2a5784c8893349fa193dc2, type: 2}
   _unsheatCooldown: 0.7
   _sheatCooldown: 1.15
   _unsheatRotation: {x: 347.96646, y: 6.878839, z: 70.50092}

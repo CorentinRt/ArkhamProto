@@ -19,17 +19,22 @@ public class SwordBehavior : MeleeWeaponBehavior
 
     public override void Hit(GameObject target)
     {
-        if ( 1 << target.layer == Mask)
+        Debug.Log("Start hit");
+        StartCoroutine(WaitBeforeHitCooldown(target, WeaponsData.SwordHitCooldown));
+    }
+    
+    public override void ApplyHit(GameObject target)
+    {
+        if (1 << target.layer == Mask)
         {
             Debug.Log("Hit enemy");
-
             VfxManager.Instance.PlaySparksParticles(Weapon.position);
         }
-        
     }
 
     public override void Damage(GameObject target)
     {
         throw new System.NotImplementedException();
     }
+
 }

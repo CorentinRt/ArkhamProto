@@ -28,6 +28,7 @@ public class KnightFightController : MonoBehaviour
     [Header("Weapon")]
     [SerializeField] private MeleeType _equippedWeapon;
     [SerializeField] private HitEntity _hitEntity;
+    [SerializeField] private WeaponsData _weaponsData;
 
     [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
@@ -55,6 +56,7 @@ public class KnightFightController : MonoBehaviour
             swordBehavior.HitEntity = _hitEntity;
             swordBehavior.Weapon = _sword;
             swordBehavior.Mask = LayerMask.GetMask("Enemy");
+            swordBehavior.WeaponsData = _weaponsData;
         }
     }
     // Start is called before the first frame update

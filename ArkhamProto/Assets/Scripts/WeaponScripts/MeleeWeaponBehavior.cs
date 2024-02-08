@@ -12,12 +12,14 @@ public abstract class MeleeWeaponBehavior : MonoBehaviour
     LayerMask _mask;
     HitEntity _hitEntity;
 
+    WeaponsData _weaponsData;
 
 
     // Properties
     public LayerMask Mask { get => _mask; set => _mask = value; }
     public Transform Weapon { get => _weapon; set => _weapon = value; }
     public HitEntity HitEntity { get => _hitEntity; set => _hitEntity = value; }
+    public WeaponsData WeaponsData { get => _weaponsData; set => _weaponsData = value; }
 
     private void Awake()
     {
@@ -38,11 +40,14 @@ public abstract class MeleeWeaponBehavior : MonoBehaviour
         
     }
     public abstract void Hit(GameObject target);
+    public abstract void ApplyHit(GameObject target);
     public abstract void Damage(GameObject target);
 
-    IEnumerator WaitBeforeHit()
+    public IEnumerator WaitBeforeHitCooldown(GameObject target, float seconds)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(seconds);
+
+        ApplyHit(target);
 
         yield return null;
     }
