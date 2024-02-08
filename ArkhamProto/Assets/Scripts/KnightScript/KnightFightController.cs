@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -89,6 +91,7 @@ public class KnightFightController : MonoBehaviour
     {
         if (_mainStates.CanAttack)
         {
+            _hitEntity.gameObject.SetActive(true);
             _mainStates.CanAttack = false;
             _animator.SetTrigger("Attack");
         }
@@ -96,6 +99,7 @@ public class KnightFightController : MonoBehaviour
     private void EndAttack(InputAction.CallbackContext context)
     {
         _mainStates.CanAttack = true;
+        _hitEntity.gameObject.SetActive(false);
     }
 
     private void StartWithdraw(InputAction.CallbackContext context)

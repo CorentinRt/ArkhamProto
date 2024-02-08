@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55e99a7790a2864ea5d268efd7b7f25, type: 3}
   m_Name: WeaponsData
   m_EditorClassIdentifier: 
-  _swordHitCooldown: 0.4
+  _swordHitCooldown: 0.6
   _spearHitCooldown: 0
   _axeHitCooldown: 0

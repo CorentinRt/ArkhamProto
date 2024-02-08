@@ -5,7 +5,7 @@ using UnityEngine;
 public class KnightMainStates : MonoBehaviour
 {
     // Fields
-    private bool _canAttack = true;
+    private bool _canAttack;
     private bool _hasWithdraw;
     private bool _isRunning;
 
@@ -15,6 +15,10 @@ public class KnightMainStates : MonoBehaviour
     public bool HasWithdraw { get => _hasWithdraw; set => _hasWithdraw = value; }
     public bool IsRunning { get => _isRunning; set => _isRunning = value; }
 
+    private void Awake()
+    {
+        _canAttack = true;
+    }
 
     // Start is called before the first frame update
     void Start()
