@@ -79,6 +79,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 555463e1-cf79-4c1e-a428-194bbb38063f
     m_ActionName: Game/Look[/Mouse/delta/up,/Mouse/delta/down,/Mouse/delta/left,/Mouse/delta/right,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b973666e-26fa-43ab-a1d2-66d938880107
+    m_ActionName: Game/Inventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -177,6 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433532479941806675}
+  - component: {fileID: 3544430434255301033}
   - component: {fileID: 8750985505930736299}
   - component: {fileID: 2965945190387143180}
   - component: {fileID: 4241720813651878395}
@@ -203,6 +208,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3410941194353613097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3544430434255301033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676364551514794354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e82ce65f55e9742a9ab70585d72de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiInventory: {fileID: 0}
+  _inventoryInputAction: {fileID: 2534876327642680354, guid: 3e70c00bad02e454694144ab577af853,
+    type: 3}
 --- !u!114 &8750985505930736299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +477,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5958527547550027776}
   - component: {fileID: 1729211214003832355}
-  - component: {fileID: 8142998143922054423}
   m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
@@ -490,18 +509,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4315e999a10fd9f41b3f41d215f98b3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8142998143922054423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7932376585905317739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1e82ce65f55e9742a9ab70585d72de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8425979512837538482

@@ -62,6 +62,15 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""b973666e-26fa-43ab-a1d2-66d938880107"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,28 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87c26845-7e6f-459e-bafb-d126995471b5"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2085eca-68ea-48a5-998a-baae47495cfe"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +283,7 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         m_Game_Attack = m_Game.FindAction("Attack", throwIfNotFound: true);
         m_Game_Withdraw = m_Game.FindAction("Withdraw", throwIfNotFound: true);
         m_Game_Look = m_Game.FindAction("Look", throwIfNotFound: true);
+        m_Game_Inventory = m_Game.FindAction("Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +349,7 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_Attack;
     private readonly InputAction m_Game_Withdraw;
     private readonly InputAction m_Game_Look;
+    private readonly InputAction m_Game_Inventory;
     public struct GameActions
     {
         private @ActionMaps m_Wrapper;
@@ -325,6 +358,7 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Game_Attack;
         public InputAction @Withdraw => m_Wrapper.m_Game_Withdraw;
         public InputAction @Look => m_Wrapper.m_Game_Look;
+        public InputAction @Inventory => m_Wrapper.m_Game_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -346,6 +380,9 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -362,6 +399,9 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -385,5 +425,6 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnWithdraw(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
 }
