@@ -457,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5958527547550027776}
   - component: {fileID: 1729211214003832355}
+  - component: {fileID: 8142998143922054423}
   m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
@@ -489,6 +490,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4315e999a10fd9f41b3f41d215f98b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8142998143922054423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932376585905317739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e82ce65f55e9742a9ab70585d72de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8425979512837538482

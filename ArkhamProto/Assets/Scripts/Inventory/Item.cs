@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum ItemType
     {
-        
+        Sword,
+        HealthPotion,
+        ManaPotion,
     }
 
-    // Update is called once per frame
-    void Update()
+    public ItemType itemtype;
+    public int amount;
+
+    public Sprite GetSprite()
     {
-        
+        switch (itemtype)
+        {
+            default:
+
+            case ItemType.Sword:
+                return ItemAssets.Instance.SwordSprite;
+
+            case ItemType.HealthPotion:
+                return ItemAssets.Instance.HealthPotionSprite;
+
+            case ItemType.ManaPotion:
+                return ItemAssets.Instance.ManaPotionSprite;
+        }
     }
+
 }

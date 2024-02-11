@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private List<Item> _itemList;
+
+    public Inventory()
     {
-        
+        _itemList = new List<Item>();
+
+        AddItem(new Item { itemtype = Item.ItemType.Sword, amount = 1});
+        AddItem(new Item { itemtype = Item.ItemType.ManaPotion, amount = 1});
+        AddItem(new Item { itemtype = Item.ItemType.HealthPotion, amount = 1});
+        AddItem(new Item { itemtype = Item.ItemType.Sword, amount = 1});
+        AddItem(new Item { itemtype = Item.ItemType.Sword, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.ManaPotion, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.HealthPotion, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.Sword, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.Sword, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.ManaPotion, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.HealthPotion, amount = 1 });
+        AddItem(new Item { itemtype = Item.ItemType.Sword, amount = 1 });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddItem(Item item)
     {
-        
+        _itemList.Add(item);
+    }
+
+    public List<Item> GetItemList()
+    {
+        return _itemList;
     }
 }
