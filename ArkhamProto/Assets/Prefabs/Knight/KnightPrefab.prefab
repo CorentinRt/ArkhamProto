@@ -243,7 +243,7 @@ MonoBehaviour:
   _hitEntity: {fileID: 7014847933679540668}
   _weaponsData: {fileID: 11400000, guid: 03b6cfb38d2a5784c8893349fa193dc2, type: 2}
   _intervalStartAttack2: 0.4
-  _littleDashAttack: {fileID: 4241720813651878395}
+  _littleDashActive: 1
   _unsheatCooldown: 0.7
   _sheatCooldown: 1.15
   _unsheatRotation: {x: 347.96646, y: 6.878839, z: 70.50092}
@@ -261,8 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b00ec09bbe84844d82e867fc1981890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distance: 0.2
-  _timeToTravel: 0.3
+  _distance: 0.3
+  _timeToTravel: 0.1
 --- !u!114 &3111907813067177818
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,7 +38,8 @@ public class KnightFightController : MonoBehaviour
     [SerializeField] private float _intervalStartAttack2;
     private Coroutine _attack1DurationCoroutine;
     private Coroutine _attack2DurationCoroutine;
-    [SerializeField] private LittleDashAttack _littleDashAttack;
+    private LittleDashAttack _littleDashAttack;
+    [SerializeField] private bool _littleDashActive;
 
     [Header("Parameters")]
     [SerializeField] private float _unsheatCooldown;
@@ -68,7 +69,10 @@ public class KnightFightController : MonoBehaviour
             swordBehavior.Mask = LayerMask.GetMask("Enemy");
             swordBehavior.WeaponsData = _weaponsData;
         }
+        
+        _littleDashAttack = GetComponent<LittleDashAttack>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,7 +105,10 @@ public class KnightFightController : MonoBehaviour
     {
         if (_mainStates.CanAttack)
         {
-            _littleDashAttack.LittleDash();
+            if (_littleDashActive)
+            {
+                _littleDashAttack.LittleDash();
+            }
 
             if (_attack1DurationCoroutine == null)
             {
@@ -132,7 +139,10 @@ public class KnightFightController : MonoBehaviour
 
     private void StartAttack2()
     {
-        _littleDashAttack.LittleDash();
+        if (_littleDashActive)
+        {
+            _littleDashAttack.LittleDash(); 
+        }
 
         Debug.Log("Attack 2");
 
