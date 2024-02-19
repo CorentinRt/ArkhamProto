@@ -7,7 +7,8 @@ public class KnightLookController : MonoBehaviour
 {
     [SerializeField] private InputActionReference _look;
 
-    [SerializeField] private float _lookSpeed;
+    [SerializeField] private float _horizontalSensitivity;
+    [SerializeField] private float _verticalSensitivity;
     [SerializeField] Transform _lookHandler;
     private Vector2 _lookDirection;
     private Coroutine _lookCoroutine;
@@ -54,9 +55,9 @@ public class KnightLookController : MonoBehaviour
 
             Vector3 tempRot2 = transform.rotation.eulerAngles;
 
-            tempRot2.y += _lookDirection.x;
+            tempRot2.y += _lookDirection.x * _horizontalSensitivity;
 
-            tempRot.x += _lookDirection.y;
+            tempRot.x += _lookDirection.y * _verticalSensitivity;
             
             if(45f < tempRot.x && tempRot.x < 330f) // bloque rotation y dans un angle de 75 degres
             {

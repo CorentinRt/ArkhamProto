@@ -296,7 +296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _look: {fileID: -6610425770572577595, guid: 3e70c00bad02e454694144ab577af853, type: 3}
-  _lookSpeed: 5
+  _horizontalSensitivity: 1
+  _verticalSensitivity: 0.5
   _lookHandler: {fileID: 808971442526411652}
 --- !u!1 &5923245864122066894
 GameObject:

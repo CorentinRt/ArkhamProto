@@ -154,7 +154,7 @@ public partial class @ActionMaps: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e872acb4-5338-4c0d-9a8d-467c95474fbb"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
